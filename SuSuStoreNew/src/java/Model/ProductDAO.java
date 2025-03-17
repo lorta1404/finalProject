@@ -6,6 +6,7 @@
 package Model;
 
 import Utils.DBUtils;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -89,20 +90,21 @@ public class ProductDAO {
         return product;
     }
 
-    public boolean createProduct(ProductDTO product) {
+    public boolean createProduct( String ProductID, String ProductName, String Description,
+            BigDecimal Price , String Size, String Color , String ImageURL , int StockQuantity , String CategoryID ,String BrandID ) {
         String sql = "INSERT INTO Products (ProductID, ProductName, Description, Price, Size, Color, ImageURL, StockQuantity, CategoryID, BrandID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection con = DBUtils.getConnection();
                 PreparedStatement stmt = con.prepareStatement(sql)) {
-            stmt.setString(1, product.getProductID());
-            stmt.setString(2, product.getProductName());
-            stmt.setString(3, product.getDescription());
-            stmt.setBigDecimal(4, product.getPrice());
-            stmt.setString(5, product.getSize());
-            stmt.setString(6, product.getColor());
-            stmt.setString(7, product.getImageURL());
-            stmt.setInt(8, product.getStockQuantity());
-            stmt.setString(9, product.getCategoryID());
-            stmt.setString(10, product.getBrandID());
+            stmt.setString(1, ProductID);
+            stmt.setString(2, ProductName);
+            stmt.setString(3, Description);
+            stmt.setBigDecimal(4, Price);
+            stmt.setString(5, Size);
+            stmt.setString(6, Color);
+            stmt.setString(7, ImageURL);
+            stmt.setInt(8, StockQuantity);
+            stmt.setString(9, CategoryID);
+            stmt.setString(10, BrandID);
             return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -110,20 +112,31 @@ public class ProductDAO {
         return false;
     }
 
-    public boolean updateProduct(ProductDTO product) {
-        String sql = "UPDATE Products SET ProductName = ?, Description = ?, Price = ?, Size = ?, Color = ?, ImageURL = ?, StockQuantity = ?, CategoryID = ?, BrandID = ? WHERE ProductID = ?";
+    public boolean updateProduct(String ProductName, String Description,
+            BigDecimal Price , String Size, String Color , String ImageURL , int StockQuantity , String CategoryID ,String BrandID,String pid) {
+        String sql = "UPDATE Products SET ProductName = ?,"
+                + " Description = ?,"
+                + " Price = ?,"
+                + " Size = ?,"
+                + " Color = ?, "
+                + "ImageURL = ?,"
+                + " StockQuantity = ?, "
+                + "CategoryID = ?, "
+                + "BrandID = ?"
+                + " WHERE ProductID = ?";
         try (Connection con = DBUtils.getConnection();
                 PreparedStatement stmt = con.prepareStatement(sql)) {
-            stmt.setString(1, product.getProductName());
-            stmt.setString(2, product.getDescription());
-            stmt.setBigDecimal(3, product.getPrice());
-            stmt.setString(4, product.getSize());
-            stmt.setString(5, product.getColor());
-            stmt.setString(6, product.getImageURL());
-            stmt.setInt(7, product.getStockQuantity());
-            stmt.setString(8, product.getCategoryID());
-            stmt.setString(9, product.getBrandID());
-            stmt.setString(10, product.getProductID());
+           
+            stmt.setString(1, ProductName);
+            stmt.setString(2, Description);
+            stmt.setBigDecimal(3, Price);
+            stmt.setString(4, Size);
+            stmt.setString(5, Color);
+            stmt.setString(6, ImageURL);
+            stmt.setInt(7, StockQuantity);
+            stmt.setString(8, CategoryID);
+            stmt.setString(9, BrandID);
+            stmt.setString(10, pid);
             return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -131,17 +144,38 @@ public class ProductDAO {
         return false;
     }
 
-    public boolean deleteProduct(String id) {
+    public boolean deleteProduct(String pid) {
         String sql = "DELETE FROM Products WHERE ProductID = ?";
         try (Connection con = DBUtils.getConnection();
                 PreparedStatement stmt = con.prepareStatement(sql)) {
-            stmt.setString(1, id);
+            stmt.setString(1, pid);
             return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
     }
+
+public static String getNextID() {
+    String query = "SELECT id FROM product ORDER BY id DESC LIMIT 1";
+    String prefix = "Pro";
+    int nextNumber = 1; 
+
+    try (Connection conn = DBUtils.getConnection();
+         PreparedStatement ps = conn.prepareStatement(query);
+         ResultSet rs = ps.executeQuery()) {
+
+        if (rs.next()) {
+            String lastID = rs.getString("id"); 
+            String numberPart = lastID.replaceAll("[^0-9]", ""); 
+            nextNumber = Integer.parseInt(numberPart) + 1; 
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    return prefix + String.format("%02d", nextNumber); 
+}
 
     public List<ProductDTO> searchProductByProductName(String productName) {
         List<ProductDTO> list = new ArrayList<>();
@@ -172,7 +206,7 @@ public class ProductDAO {
         }
         return list;
     }
-
+ 
     public static void main(String[] args) {
         ProductDAO dao = new ProductDAO();
 //        ProductDTO pro = dao.getProductById("Pro01");
