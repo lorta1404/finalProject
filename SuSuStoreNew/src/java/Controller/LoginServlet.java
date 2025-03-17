@@ -52,21 +52,15 @@ public class LoginServlet extends HttpServlet {
         if (acc != null) {
             url = "home.jsp";
             error = false;
-            if (acc.getRole() == "user") {
-                HttpSession session = request.getSession();
-                session.setAttribute("user", acc);
-            } else {
-                HttpSession session = request.getSession();
-                session.setAttribute("admin", acc);
-            }
-
+            HttpSession session = request.getSession();
+            session.setAttribute("acc", acc);
         } else {
             request.setAttribute("ERROR", "Incorrect UserID or Password");
             error = true;
 
         }
+        
         if (error) {
-
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
         } else {

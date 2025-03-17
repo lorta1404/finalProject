@@ -52,7 +52,7 @@ public class MainController extends HttpServlet {
                 url = "ProductDetailServlet";
             } else if (action.equals("LISTBYBRAND")) {
                 url = "ListByBrandServlet";
-            }
+            } 
 //            your code here CertificateDetailServlet
 
         } catch (Exception e) {

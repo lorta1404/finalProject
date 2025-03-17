@@ -14,10 +14,6 @@
     cursor: pointer;
     font-size: 16px;
 }
-
-
-
-
 .div-fixed {
     position: sticky;
     top: 0; /* Cố định ở phía trên màn hình */
@@ -27,7 +23,29 @@
     padding: 10px; /* Khoảng cách lề (có thể thay đổi) */
     z-index: 100; /* Đảm bảo div nằm trên các phần tử khác */
 }
+#menu {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Ẩn menu ra ngoài màn hình */
+    width: 250px;
+    height: 100%;
+    background-color: #f0f0f0;
+    transition: left 0.3s ease; /* Hiệu ứng chuyển động */
+}
 
+#menu.active {
+    left: 0; /* Hiển thị menu */
+}
+
+#menu ul {
+    list-style: none;
+    padding: 20px;
+    margin: 0;
+}
+
+#menu li {
+    margin-bottom: 10px;
+}
 .storeName{
     color: red;
     text-align: center;
