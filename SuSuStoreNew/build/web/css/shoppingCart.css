@@ -1,0 +1,166 @@
+.div-fixed {
+    position: sticky;
+    top: 0; /* Cố định ở phía trên màn hình */
+    left: 0px;
+    width: 100%; /* Chiều rộng 100% (có thể thay đổi) */
+    background-color: #f0f0f0; /* Màu nền (có thể thay đổi) */
+    padding: 10px; /* Khoảng cách lề (có thể thay đổi) */
+    z-index: 100; /* Đảm bảo div nằm trên các phần tử khác */
+}
+
+.storeName{
+    color: red;
+    text-align: center;
+}
+
+.information{
+    display: flex;
+    justify-content:right;
+}
+.category{
+    display: flex;
+    justify-content: center;
+}
+.category a{
+    margin: 50px 50px;
+}
+.logo{
+    display: flex;
+}
+.logo-img{
+    height: 50px;
+    width: 50px;
+}
+.logo-img img{
+    height: 100%;
+    width: 100%;
+}
+.search-cart{
+    margin-left: auto;
+}
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+.cart-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.item-image img {
+    max-width: 100px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.item-details {
+    flex-grow: 1;
+}
+
+.item-title {
+    margin: 0;
+}
+
+.item-size, .item-code {
+    margin: 5px 0;
+    color: #666;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.quantity-button {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.item-price {
+    margin: 0 10px;
+    color: red;
+    font-weight: bold;
+}
+
+.subtotal {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.remove-item {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.cart-summary {
+    text-align: right;
+}
+
+.total {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.action-buttons {
+    margin-top: 20px;
+}
+
+.action-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.continue-shopping {
+    background-color: #ffeb3b;
+}
+
+.checkout {
+    background-color: orange;
+    color: white;
+}
+
+footer {
+    margin-top: 50px;
+            background-color: #f7a831; /* Màu nền cam */
+            font-family: sans-serif;
+            color: black;
+            padding: 20px;
+        }
+.footer {
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.left, .middle, .right {
+    flex: 1;
+}
+.left p, .middle p {
+    margin: 5px 0;
+}
+.right img {
+    max-width: 100%;
+    height: auto;
+}
+.social-icons {
+    text-align: center;
+    margin-top: 20px;
+}
+.social-icons img {
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+}

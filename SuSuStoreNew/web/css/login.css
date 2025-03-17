@@ -1,0 +1,23 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    /*align-items: center;*/
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+.username, password{
+    margin-bottom: 20px;
+}
+.username input{
+    padding: 5px 200px 5px 0px;
+}
+.password input{
+    padding: 5px 200px 5px 0px;
+    margin-bottom: 30px
+}
+
+.login{
+   margin-left: 400px
+}

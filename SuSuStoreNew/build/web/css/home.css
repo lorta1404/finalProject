@@ -1,0 +1,123 @@
+
+
+.button-style {
+    width: 40px;
+    height: 20px; /* Chiều cao */
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #6c757d; /* Màu xanh giống button */
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+
+
+.div-fixed {
+    position: sticky;
+    top: 0; /* Cố định ở phía trên màn hình */
+    left: 0px;
+    width: 100%; /* Chiều rộng 100% (có thể thay đổi) */
+    background-color: #f0f0f0; /* Màu nền (có thể thay đổi) */
+    padding: 10px; /* Khoảng cách lề (có thể thay đổi) */
+    z-index: 100; /* Đảm bảo div nằm trên các phần tử khác */
+}
+
+.storeName{
+    color: red;
+    text-align: center;
+}
+
+.information{
+    display: flex;
+    justify-content:right;
+}
+.category{
+    display: flex;
+    justify-content: center;
+}
+.category a{
+    margin: 50px 50px;
+}
+.logo{
+    display: flex;
+}
+.logo-img{
+    height: 50px;
+    width: 50px;
+}
+.logo-img img{
+    height: 100%;
+    width: 100%;
+}
+.search-cart{
+    margin-left: auto;
+}
+.content{
+
+    display: flex;
+}
+.product-card{
+    width: 70%;
+    height: auto;
+}
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.product {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    height: 330px;
+}
+.product img{
+    height: 220px;
+    width: 100%;
+}
+.discount {
+    background-color: red;
+    color: white;
+    padding: 5px;
+    position: absolute;
+}
+
+footer {
+    margin-top: 50px;
+    background-color: #f7a831; /* Màu nền cam */
+    font-family: sans-serif;
+    color: black;
+    padding: 20px;
+}
+.footer {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.left, .middle, .right {
+    flex: 1;
+}
+.left p, .middle p {
+    margin: 5px 0;
+}
+.right img {
+    max-width: 100%;
+    height: auto;
+}
+.social-icons {
+    text-align: center;
+    margin-top: 20px;
+}
+.social-icons img {
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+}
