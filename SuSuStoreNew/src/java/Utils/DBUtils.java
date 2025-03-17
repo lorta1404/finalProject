@@ -39,7 +39,7 @@ public class DBUtils {
     
     
     private final static String serverName = "localhost";
-    private final static String dbName = "SUSUSTORENEW";
+    private final static String dbName = "SUSUSTORE";
     private final static String portNumber = "1433";
     private final static String instance = "";//LEAVE THIS ONE EMPTY IF YOUR SQL IS A SINGLE INSTANCE
     private final static String userID = "sa";
