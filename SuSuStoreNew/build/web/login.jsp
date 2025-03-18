@@ -19,11 +19,11 @@
             <form action="MainController" method="POST">
                 <div class="username">
                     <label for="username">Username:</label>
-                    <input id="username" name="username" type="text" value="ad" required> 
+                    <input id="username" name="username" type="text" value="Vanan1010" required> 
                 </div>
                 <div class="password">
                     <label for="password">Password:</label>
-                    <input id="password" name="password" type="password" value="1" required> 
+                    <input id="password" name="password" type="password" value="Annguyen1234@" required> 
                 </div>
                 <c:set var="msg" value="${requestScope.ERROR}"  />
                 ${msg}

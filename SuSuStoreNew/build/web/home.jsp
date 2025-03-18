@@ -23,12 +23,19 @@
             <div class="storeName">
                 <h1>SUSUSTORE</h1>
             </div>
+            <c:set var="acc" value="${sessionScope.acc}" />
+            <c:choose>
+                <c:when test="${not empty acc}">
+                    <div class="information">
+                        <div class="hotline">Hello, ${acc.fullName},<a href="MainController?action=LOGOUT">log out</a> </div>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <p>Bạn chưa đăng nhập. Vui lòng <a href="login.jsp">đăng nhập</a>.</p>
+                </c:otherwise>
+            </c:choose>
 
-            <div class="information">
-                <div class="hotline">0344309959</div>
-                <div class="check-user"><a href="MainController?action=LOGIN">Login</a></div>
-                <div class="check-user"><a href="signUp.jsp">SignUp</a></div>
-            </div>
+
         </div>     
         <div class="div-fixed">
 
@@ -59,19 +66,21 @@
                 </div>
             </div>
         </div>
-
-        <div class="Admin">
-            <button id="menu-toggle">Menu</button>
-            <div id="menu" type="hidden">
-                <ul>
-                    <li><a href="#">ManageProduct</a></li>
-                    <li><a href="#">ManagerOrder</a></li>
-                    <li><a href="#">ManagerUser</a></li>
-                    <li><a href="#">ManagerRevenue</a></li>
-                </ul>
+        <c:if test="${acc.role == '1'}">                    
+            <div class="Admin">
+                <button id="menu-toggle">Menu</button>
+                <div id="menu" type="hidden">
+                    <ul>
+                        <li><a href="#">ManageProduct</a></li>
+                        <li><a href="#">ManagerOrder</a></li>
+                        <li><a href="#">ManagerUser</a></li>
+                        <li><a href="#">ManagerRevenue</a></li>
+                    </ul>
+                </div>
+                <script src="./js/menu.js"></script>
             </div>
-            <script src="./js/menu.js"></script>
-        </div>             
+        </c:if>                   
+
         <c:set var="list" value="${requestScope.list}"  />
 
         <div class="content">
